@@ -1,0 +1,8 @@
+<h1>rtcle</h1>
+<h3><em>an article reading thing...</em> </h3>
+
+<div *ngFor="let post of posts;"
+     class='article'>
+  <h2>{{post.title}}</h2>
+  <h4> by <strong>{{post.author.name}}</strong></h4>
+</div>
