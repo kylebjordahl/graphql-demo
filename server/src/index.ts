@@ -8,10 +8,6 @@ import { ApolloServer } from './server'
 const server = new ApolloServer({
 	typeDefs,
 	resolvers,
-	tracing: true,
-	subscriptions: {
-		path: '/',
-	},
 	context: {
 		db: db,
 	} as ServerContext,

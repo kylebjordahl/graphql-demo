@@ -85,7 +85,7 @@ export class ApolloServer extends ApolloServerBase {
 
 	// Listen takes the same arguments as http.Server.listen.
 	public async prepare() {
-		await this.willStart()
+		await this.start()
 
 		// This class is the easy mode for people who don't create their own express
 		// object, so we have to create it.
@@ -107,9 +107,9 @@ export class ApolloServer extends ApolloServerBase {
 		const httpServer = http.createServer(app)
 		this.httpServer = httpServer
 
-		if (this.subscriptionServerOptions) {
-		this.installSubscriptionHandlers(httpServer)
-		}
+		// if (this.subscriptionServerOptions) {
+		// this.installSubscriptionHandlers(httpServer)
+		// }
 
 		const listen = async (...opts: Array<any>) => {
 
@@ -121,7 +121,7 @@ export class ApolloServer extends ApolloServerBase {
 				httpServer.listen(...(opts.length ? opts : [{ port: 4000 }]))
 			})
 
-			return this.createServerInfo(httpServer, this.subscriptionsPath)
+			return this.createServerInfo(httpServer)
 		}
 
 		return listen
